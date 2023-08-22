@@ -3,6 +3,7 @@
 
 # include <stdbool.h>
 # include <math.h>
+
 # include "libft.h"
 # include "vec3.h"
 # include "ray.h"
@@ -48,7 +49,6 @@ typedef struct s_camera
 }	t_camera;
 
 void	set_face_normal(t_ray *r, t_vec3 *o_n, t_hit_rec *rec);
-
 int		minirt_parser(const char *filename, t_list **list, t_camera *camera);
 
 /* parser 관련함수 */
@@ -59,6 +59,7 @@ int		ambient_data(char **data, t_camera *cam);
 int		camera_data(char **data, t_camera *cam);
 int		light_data(char **data, t_list **list);
 int		sphere_data(char **data, t_list **list);
+
 
 /* camera.c 관련 함수 */
 double	degrees_to_radians(double degrees);
