@@ -4,6 +4,7 @@ int	count_element_2pt_arr(char **data)
 {
 	int	count;
 
+	count = 0;
 	while (*data)
 	{
 		count++;
@@ -15,7 +16,7 @@ int	count_element_2pt_arr(char **data)
 int	is_value_btw_255(int value, int *rgb_errno)
 {
 	if (value < 0 || value > 255)
-		rgb_errno = 1;
+		*rgb_errno = 1;
 	return (value);
 }
 
