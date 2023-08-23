@@ -147,12 +147,12 @@ int	main(int argc, char *argv[])
 {
 	t_list		*list;
 	t_camera	cam;
+	t_hittable	*bvh;
 
 	list = NULL;
 	if (argc != 2)
 		return (0);
 	minirt_parser(argv[1], &list, &cam);
-	t_hittable **arr = list_to_hittable_arr(list);
-	arr = NULL;
+	bvh = make_bvh(list);
 	return (0);
 }

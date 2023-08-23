@@ -18,6 +18,9 @@ typedef struct s_hittable
 	struct s_hittable	*right;
 }	t_hittable;
 
+/* bvh.c */
+t_hittable	*make_bvh(t_list *list);
+
 /* bvh_utils.c */
 t_hittable	**list_to_hittable_arr(t_list *list);
 void		quick_sort(t_hittable **arr, int left, int right,
