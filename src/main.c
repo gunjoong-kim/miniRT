@@ -78,6 +78,7 @@ int print_image()
 }
 
 /* vec3 test function */
+double	random_double(void);
 void	vec3_test(void)
 {
 	t_vec3	v1, v2, v3;
@@ -114,7 +115,6 @@ void	vec3_test(void)
 	printf("v3_unit = "); vec3_print(vec3_unit(v3));
 
 	/* vec3_3 */
-	printf("=== vec3_3 ===\n");
 	printf("random vecter = "); vec3_print(vec3_random());
 	printf("random vecter = "); vec3_print(vec3_random());
 	printf("random vecter = "); vec3_print(vec3_random());
@@ -147,6 +147,6 @@ int	main()
 	vec3_test();
 
 	/* main logic */
-	print_image();
+	//print_image();
 	return (0);
 }
