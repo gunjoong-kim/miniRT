@@ -6,6 +6,7 @@
 #include "bvh.h"
 #include "object.h"
 #include "vec3.h"
+#include "ray.h"
 
 // mlx 구조체
 typedef struct	s_vars {
@@ -161,5 +162,22 @@ int	main(int argc, char *argv[])
 	hittables = list_to_hittable_arr(list);
 	bvh = make_bvh(hittables, 0, ft_lstsize(list) - 1);
 	ft_lstclear(&list, dummy);
+
+	/* ray test START */
+	t_ray ray;
+	t_point3 ray_hit_point;
+	ray.orig.x = 0;
+	ray.orig.y = 0;
+	ray.orig.z = 0;
+	ray.dir.x = 1;
+	ray.dir.y = 1;
+	ray.dir.z = 1;
+
+	ray_hit_point = ray_at(ray, 3);
+	printf("x = %.2f, y = %.2f, z = %.2f\n", ray_hit_point.x, ray_hit_point.y, ray_hit_point.z);
+	ray_hit_point = ray_at(ray, 0.5);
+	printf("x = %.2f, y = %.2f, z = %.2f\n", ray_hit_point.x, ray_hit_point.y, ray_hit_point.z);
+	/* ray test END */
+
 	return (0);
 }
