@@ -39,6 +39,8 @@ int	minirt_parser(const char *filename, t_list **list, t_camera *camera)
 	char		*line;
 
 	rt_fd = open(filename, O_RDONLY);
+	if (rt_fd == -1)
+		return (-1);
 	while (1)
 	{
 		line = get_next_line(rt_fd);
