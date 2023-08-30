@@ -27,4 +27,3 @@ bool	cylinder_hit(t_ray *r, double min_t, double max_t,
 	// else : rec에 정보 기록 후 return true;
 	return (true);
 }
-
