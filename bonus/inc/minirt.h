@@ -11,7 +11,7 @@
 # include "vec3.h"
 # include "ray.h"
 
-# define SAMPLE_PER_PIXEL 10
+# define SAMPLE_PER_PIXEL 100
 # define DEPTH 50
 # define DEFAULT_IMAGE_WID 1600
 # define DEFAULT_IMAGE_HGT 1000
@@ -86,7 +86,7 @@ void	set_face_normal(t_ray *r, t_vec3 o_n, t_hit_rec *rec);
 void	swap_d(double *left, double *right);
 double	clamp(double x, double min, double max);
 double	random_double(void);
-void	vec3_init(t_vec3 *v);
+void	vec3_init(t_vec3 *v, double x, double y, double z);
 t_color	black_color(void);
 void	*xmalloc(size_t size);
 void	minirt_error_exit(void);
