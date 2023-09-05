@@ -41,9 +41,9 @@ t_color	img_value(t_hit_rec *rec, t_img *img, void *bum_img, t_color rgb)
 	img->pixel = img->data
 		+ img->j * img->bytes_per_scanline
 		+ img->i * img->bytes_per_pixel;
-	color.x = color_scale * img->pixel[0];
-	color.y = color_scale * img->pixel[1];
-	color.z = color_scale * img->pixel[2];
+	color.x = color_scale * img->pixel[1];
+	color.y = color_scale * img->pixel[2];
+	color.z = color_scale * img->pixel[3];
 	return (color);
 }
 
