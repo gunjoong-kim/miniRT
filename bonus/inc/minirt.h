@@ -26,11 +26,22 @@
 # define PLANE "pl"
 # define CYLINDER "cy"
 
+# define DIFFUSE "D"
+# define METAL "M"
+# define DIELECTRIC "DI"
+
+# define SOLID "S"
+# define CHECKER "C"
+# define I "I"
+
+# define COMMENT "#"
+
 # define ERR_ARGV_MSG "Error\nminiRT : Argument Error : filename with .rt"
 # define ERR_INV_FILE "Error\nminiRT : invalid file format: .rt"
 # define ERR_MAP "Error\nminiRT : Map Error!"
 
 typedef struct s_material	t_material;
+typedef struct s_texture	t_texture;
 typedef struct s_hittable	t_hittable;
 typedef struct s_sphere		t_sphere;
 
@@ -75,17 +86,24 @@ void	*xmalloc(size_t size);
 void	minirt_error_exit(void);
 void	minirt_str_error_exit(char *str);
 
-/* parser 관련함수 */
-int		minirt_parser(const char *filename, t_list **list, t_camera *camera);
-int		data_to_rgb(char *str, t_color *rgb);
-int		data_to_point(char *str, t_point3 *point);
-int		count_element_2pt_arr(char **data);
-int		ambient_data(char **data, t_camera *cam);
-int		camera_data(char **data, t_camera *cam);
-int		light_data(char **data, t_list **list);
-int		sphere_data(char **data, t_list **list);
-int		plane_data(char **data, t_list **list);
-int		cylinder_data(char **data, t_list **list);
+/* parser */
+int			minirt_parser(const char *filename, t_list **list, t_camera *camera);
+int			data_to_rgb(char *str, t_color *rgb);
+int			data_to_point(char *str, t_point3 *point);
+int			count_element_2pt_arr(char **data);
+int			ambient_data(char **data, t_camera *cam);
+int			camera_data(char **data, t_camera *cam);
+int			light_data(char **data, t_list **list);
+int			init_material(t_material *mat, char *mat_line);
+int			init_object(t_hittable *hittable, char *obj_line);
+int			init_texture(t_texture *tex, char *line);
+int			plane_initializer(t_hittable *hittable, char **data);
+int			cylinder_initializer(t_hittable *hittable, char **data);
+int			sphere_initializer(t_hittable *hittable, char **data);
+t_sphere	*light_initializer(t_point3 center, double ratio, t_color rgb);
+int			object_constructor(char **data, t_list **list);
+int			world_constructor(char *line, t_list **list, t_camera *camera);
+void		free_hittables(void *hittable);
 
 /* camera.c 관련 함수 */
 double	degrees_to_radians(double degrees);
