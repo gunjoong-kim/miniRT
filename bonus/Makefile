@@ -15,12 +15,13 @@ INC=-Ilibft -Imlx -Iinc
 FILE=	main.c				\
 		utils/utils_1.c		\
 		utils/utils_2.c		\
-		utils/utils_3.c		\
+		utils/err_utils.c	\
 		utils/mlx_utils.c	\
 		vec3/vec3_1.c		\
 		vec3/vec3_2.c		\
 		vec3/vec3_3.c		\
 		vec3/vec3_4.c		\
+		vec3/vec3_5.c		\
 		parser/parser_1.c	\
 		parser/parser_2.c	\
 		parser/parser_3.c	\
@@ -39,8 +40,8 @@ FILE=	main.c				\
 		render/phong.c		\
 		render/path.c		\
 		render/render.c 	\
-		camera.c			\
-		ray.c				\
+		render/camera.c		\
+		render/ray.c		\
 
 all : $(NAME)
 
