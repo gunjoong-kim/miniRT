@@ -14,6 +14,7 @@ enum e_texture_type
 
 typedef struct s_img
 {
+	void			*img_ptr;
 	unsigned char	*data;
 	int				img_width;
 	int				img_height;
