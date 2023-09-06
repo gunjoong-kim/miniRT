@@ -17,6 +17,7 @@ int	init_sphere(t_hittable *new_object, char **data)
 	if (atod_errno == ATOD_FORMAT_ERR)
 		return (-1);
 	new_object->object = (t_sphere *)xmalloc(sizeof(t_sphere));
+	new_object->type = sphere;
 	((t_sphere *)(new_object->object))->center = center;
 	((t_sphere *)(new_object->object))->radius = radius;
 	return (1);
@@ -34,6 +35,7 @@ int	init_plane(t_hittable *new_object, char **data)
 	if (data_to_point(data[2], &normal) == -1)
 		return (-1);
 	new_object->object = (t_plane *)xmalloc(sizeof(t_plane));
+	new_object->type = plane;
 	((t_plane *)(new_object->object))->p = p;
 	((t_plane *)(new_object->object))->n = vec3_unit(normal);
 	return (1);
@@ -58,6 +60,7 @@ int	init_cylinder(t_hittable *new_object, char **data)
 	if (atod_errno == ATOD_FORMAT_ERR)
 		return (-1);
 	new_object->object = (t_cylinder *)xmalloc(sizeof(t_cylinder));
+	new_object->type = cylinder;
 	((t_cylinder *)(new_object->object))->center = center;
 	((t_cylinder *)(new_object->object))->axis = vec3_unit(axis);
 	((t_cylinder *)(new_object->object))->diameter = diameter;

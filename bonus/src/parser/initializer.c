@@ -29,6 +29,7 @@ int	sphere_initializer(t_hittable *hittable, char **data)
 		return (-1);
 	if (init_texture(&tmp->mat.t, data[2]) == -1)
 		return (-1);
+	hittable->center = tmp->center;
 	hittable->hit = sphere_hit;
 	hittable->b_box = sphere_b_box;
 	return (1);
@@ -43,6 +44,7 @@ int	plane_initializer(t_hittable *hittable, char **data)
 		return (-1);
 	if (init_texture(&tmp->mat.t, data[2]) == -1)
 		return (-1);
+	hittable->center = tmp->p;
 	hittable->hit = plane_hit;
 	hittable->b_box = plane_b_box;
 	return (1);
@@ -57,6 +59,7 @@ int	cylinder_initializer(t_hittable *hittable, char **data)
 		return (-1);
 	if (init_texture(&tmp->mat.t, data[2]) == -1)
 		return (-1);
+	hittable->center = tmp->center;
 	hittable->hit = cylinder_hit;
 	hittable->b_box = cylinder_b_box;
 	return (1);

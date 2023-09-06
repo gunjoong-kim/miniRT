@@ -5,6 +5,8 @@ int	init_solid(t_texture *tex, char **data)
 {
 	t_color	rgb;
 
+	if (count_element_2pt_arr(data) != 2)
+		return (-1);
 	if (data_to_rgb(data[1], &rgb) == -1)
 		return (-1);
 	//bmp image 씌우기
