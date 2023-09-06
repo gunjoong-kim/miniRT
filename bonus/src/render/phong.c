@@ -45,10 +45,11 @@ t_color	phong_color(t_ray r, t_camera *cam, t_hittable *bvh, t_sphere *l)
 	if (hit_bvh(&light_rec, 0.001, length, &p_to_light, bvh)
 		&& light_rec.mat->mat_type != light
 		&& light_rec.mat != rec.mat)
-		return (black_color());
+		return (vec3_instant(0,0,0));
 	t_color	diffuse = diffuse_color(&rec, cam, l,
 	 				&p_to_light);
 	t_color	specular = specular_color(&r, &p_to_light, &rec, l);
-	phong = vec3_add(vec3_mul_vec3(vec3_add(ambient, diffuse), rec.mat->t.rgb) ,specular);
+	phong = vec3_add(vec3_mul_vec3(vec3_add(ambient, diffuse),
+					rec.mat->t.value(&rec, &rec.mat->t.img, &rec.mat->t.bmp_img, rec.mat->t.rgb)) ,specular);
 	return (phong);
 }

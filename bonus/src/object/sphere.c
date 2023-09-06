@@ -21,7 +21,7 @@ void	get_sphere_uv(t_vec3 o_n, t_hit_rec *rec)
 	double	phi;
 
 	theta = acos(-(o_n.y));
-    phi = atan2(-(o_n.z), o_n.x) + PI;
+	phi = atan2(-(o_n.z), o_n.x) + PI;
 	rec->u = phi / (2 * PI);
 	rec->v = theta / PI;
 }
@@ -39,7 +39,7 @@ bool	sphere_hit(t_ray *r, double min_t, double max_t,
 	double		root;
 
 	sp = (t_sphere *)object;
-	if (sp->mat.mat_type == light)
+	if (rec->depth == 50 && sp->mat.mat_type == light)
 		return (false);
 	oc = vec3_sub(r->orig, sp->center);
 	a = vec3_squared(r->dir);
