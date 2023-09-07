@@ -11,7 +11,7 @@
 # include "vec3.h"
 # include "ray.h"
 
-# define SAMPLE_PER_PIXEL 200
+# define SAMPLE_PER_PIXEL 2
 # define DEPTH 50
 # define DEFAULT_IMAGE_WID 1600
 # define DEFAULT_IMAGE_HGT 900
@@ -54,6 +54,7 @@ typedef struct s_sphere		t_sphere;
 typedef struct s_hit_record
 {
 	t_point3	p;
+	t_point3	center;
 	t_vec3		normal;
 	t_material	*mat;
 	double		t;
@@ -85,6 +86,8 @@ typedef struct s_minirt
 	int			depth;
 	int			illumination; //phong or path
 	int			mode; //editing or rendering
+	int			is_camera_in_map;
+	int			is_ambient_in_map;
 }	t_minirt;
 
 /* rendering 함수 */
@@ -108,8 +111,8 @@ int			minirt_parser(const char *filename, t_list **list, t_minirt *minirt);
 int			data_to_rgb(char *str, t_color *rgb);
 int			data_to_point(char *str, t_point3 *point);
 int			count_element_2pt_arr(char **data);
-int			ambient_data(char **data, t_camera *cam);
-int			camera_data(char **data, t_camera *cam);
+int			ambient_data(char **data, t_minirt *minirt);
+int			camera_data(char **data, t_minirt *minirt);
 int			light_data(char **data, t_list **list);
 int			init_material(t_material *mat, char *mat_line);
 int			init_object(t_hittable *hittable, char *obj_line);
@@ -119,7 +122,7 @@ int			cylinder_initializer(t_hittable *hittable, char **data, t_minirt *minirt);
 int			sphere_initializer(t_hittable *hittable, char **data, t_minirt *minirt);
 t_sphere	*light_initializer(t_point3 center, double ratio, t_color rgb);
 int			object_constructor(char **data, t_list **list, t_minirt *minirt);
-int			world_constructor(char *line, t_list **list, t_camera *camera);
+int			world_constructor(char *line, t_list **list, t_minirt *minirt);
 void		free_hittables(void *hittable);
 
 /* camera.c 관련 함수 */
