@@ -9,13 +9,16 @@
 
 int	print_image(t_hittable *bvh, t_camera *cam, t_sphere **light_lst)
 {
-	int		pixel;
-	double	sample_per_pixel;
-	t_vars	vars;
-	t_data	image;
+	int			pixel;
+	double		sample_per_pixel;
+	t_vars		vars;
+	t_data		image;
+	t_common	common;
 
 	minirt_init(&image, &vars);
-	phong_trace(&image, bvh, cam, light_lst);
+	common.bvh = bvh;
+	common.cam = cam;
+	phong_trace(&image, common, light_lst);
 	mlx_put_image_to_window(vars.mlx, vars.win, image.img, 0, 0);
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_hook(vars.win, 17, 0, exit_hook, 0);

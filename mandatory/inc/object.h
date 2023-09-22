@@ -44,14 +44,12 @@ typedef struct s_cy_vars
 	t_color		rgb;
 }	t_cy_vars;
 
-bool		sphere_hit(t_ray *r, double min_t, double max_t,
-				t_hit_rec *rec, void *object);
-bool		aabb_hit(t_ray *r, double min_t, double max_t,
-				t_hit_rec *rec, void *object);
-bool		plane_hit(t_ray *r, double min_t, double max_t,
-				t_hit_rec *rec, void *object);
-bool		cylinder_hit(t_ray *r, double min_t, double max_t,
-				t_hit_rec *rec, void *object);
+bool		sphere_hit(t_ray *r, t_hit_rec *rec, void *object);
+bool		aabb_hit(t_ray *r, t_hit_rec *rec, void *object);
+bool		plane_hit(t_ray *r, t_hit_rec *rec, void *object);
+bool		cylinder_hit(t_ray *r, t_hit_rec *rec, void *object);
+
+bool		quadratic_formular(double constants[3], t_hit_rec *rec);
 
 t_aabb		sphere_b_box(void *object);
 t_aabb		plane_b_box(void *object);

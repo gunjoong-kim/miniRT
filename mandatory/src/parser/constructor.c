@@ -11,8 +11,6 @@ t_sphere	*sphere_constructor(t_point3 center, double radius, t_color rgb)
 	new_sp->mat.mat_type = diffuse;
 	new_sp->mat.emit = emit_general;
 	new_sp->mat.scatter = scatter_diffuse;
-	new_sp->mat.t.bmp_img = NULL;
-	new_sp->mat.t.img = NULL;
 	new_sp->mat.t.rgb = rgb;
 	new_sp->mat.t.tex_type = solid;
 	new_sp->mat.t.value = solid_value;
@@ -29,8 +27,6 @@ t_sphere	*light_constructor(t_point3 center, double ratio, t_color rgb)
 	new_light->mat.mat_type = light;
 	new_light->mat.emit = emit_light;
 	new_light->mat.scatter = scatter_light;
-	new_light->mat.t.bmp_img = NULL;
-	new_light->mat.t.img = NULL;
 	new_light->mat.t.rgb = vec3_mul_scalar(rgb, ratio);
 	new_light->mat.t.tex_type = solid;
 	new_light->mat.t.value = solid_value;
@@ -47,8 +43,6 @@ t_plane	*plane_constructor(t_point3 p, t_point3 normal, t_color rgb)
 	new_pl->mat.mat_type = diffuse;
 	new_pl->mat.emit = emit_general;
 	new_pl->mat.scatter = scatter_diffuse;
-	new_pl->mat.t.bmp_img = NULL;
-	new_pl->mat.t.img = NULL;
 	new_pl->mat.t.rgb = rgb;
 	new_pl->mat.t.tex_type = solid;
 	new_pl->mat.t.value = solid_value;
@@ -67,8 +61,6 @@ t_cylinder	*cylinder_constructor(t_cy_vars cy_vars)
 	new_cy->mat.mat_type = diffuse;
 	new_cy->mat.emit = emit_general;
 	new_cy->mat.scatter = scatter_diffuse;
-	new_cy->mat.t.bmp_img = NULL;
-	new_cy->mat.t.img = NULL;
 	new_cy->mat.t.rgb = cy_vars.rgb;
 	new_cy->mat.t.tex_type = solid;
 	new_cy->mat.t.value = solid_value;
