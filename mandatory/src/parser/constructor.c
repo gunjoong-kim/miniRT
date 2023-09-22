@@ -55,22 +55,21 @@ t_plane	*plane_constructor(t_point3 p, t_point3 normal, t_color rgb)
 	return (new_pl);
 }
 
-t_cylinder	*cylinder_constructor(t_point3 center, t_vec3 axis, double diameter,
-		double height, t_color rgb)
+t_cylinder	*cylinder_constructor(t_cy_vars cy_vars)
 {
 	t_cylinder	*new_cy;
 
 	new_cy = (t_cylinder *)xmalloc(sizeof(t_cylinder));
-	new_cy->center = center;
-	new_cy->axis = axis;
-	new_cy->diameter = diameter;
-	new_cy->height = height;
+	new_cy->center = cy_vars.center;
+	new_cy->axis = cy_vars.axis;
+	new_cy->diameter = cy_vars.diameter;
+	new_cy->height = cy_vars.height;
 	new_cy->mat.mat_type = diffuse;
 	new_cy->mat.emit = emit_general;
 	new_cy->mat.scatter = scatter_diffuse;
 	new_cy->mat.t.bmp_img = NULL;
 	new_cy->mat.t.img = NULL;
-	new_cy->mat.t.rgb = rgb;
+	new_cy->mat.t.rgb = cy_vars.rgb;
 	new_cy->mat.t.tex_type = solid;
 	new_cy->mat.t.value = solid_value;
 	return (new_cy);
