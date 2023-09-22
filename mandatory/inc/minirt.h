@@ -12,7 +12,6 @@
 # include "ray.h"
 
 # define SAMPLE_PER_PIXEL 5
-# define DEPTH 50
 # define DEFAULT_IMAGE_WID 1600
 # define DEFAULT_IMAGE_HGT 1000
 # define PI 3.1415926535897932385

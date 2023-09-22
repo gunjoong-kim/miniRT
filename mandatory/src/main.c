@@ -7,13 +7,6 @@
 #include "vec3.h"
 #include "ray.h"
 
-
-void	leaks()
-{
-	system("leaks -q $PPID");
-}
-
-
 int	print_image(t_hittable *bvh, t_camera *cam, t_sphere **light_lst)
 {
 	int		pixel;
@@ -22,8 +15,7 @@ int	print_image(t_hittable *bvh, t_camera *cam, t_sphere **light_lst)
 	t_data	image;
 
 	minirt_init(&image, &vars);
-	path_trace(&image, bvh, cam);
-	//phong_trace(&image, bvh, cam, light_lst);
+	phong_trace(&image, bvh, cam, light_lst);
 	mlx_put_image_to_window(vars.mlx, vars.win, image.img, 0, 0);
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_hook(vars.win, 17, 0, exit_hook, 0);
@@ -39,7 +31,6 @@ int	main(int argc, char *argv[])
 	t_hittable	**hittables;
 	t_sphere	**light_lst;
 
-	atexit(leaks);
 	list = NULL;
 	if (argc != 2)
 		minirt_str_error_exit(ERR_ARGV_MSG);

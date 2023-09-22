@@ -38,7 +38,6 @@ FILE=	main.c				\
 		material/emit.c		\
 		material/scatter.c	\
 		render/phong.c		\
-		render/path.c		\
 		render/render.c 	\
 		camera.c			\
 		ray.c				\
