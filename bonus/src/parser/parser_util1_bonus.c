@@ -1,4 +1,4 @@
-#include "minirt.h"
+#include "parser_bonus.h"
 
 int	count_element_2pt_arr(char **data)
 {
@@ -22,12 +22,13 @@ void	normalize_color(t_color *color)
 
 int	is_value_btw_255(int value, int *rgb_errno)
 {
+	double	ret;
+
 	if (value < 0 || value > 255)
 		*rgb_errno = 1;
 	return (value);
 }
 
-// ft_atoi로 넘길 str 검사를 해봐야함
 int	data_to_rgb(char *str, t_color *rgb)
 {
 	char	**rgb_data;
